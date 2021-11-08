@@ -1,0 +1,5 @@
+{
+	"layout": "poklon",
+	"tags": "pokloni",
+    "permalink": "/pokloni/{{ title | slugify }}/"
+}

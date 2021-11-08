@@ -1,0 +1,24 @@
+---
+permalink: /tags/
+layout: base
+title: Tagovi
+---
+
+
+<div class="container max-w-3xl mt-28 px-6 pt-24">
+
+    <h1>{{title}}</h1>
+
+    <section class="mt-15">
+        {% for tag in collections.tagList %}
+            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+            <article class="my-8">
+                <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                    <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
+                </h2>
+            </article>
+        {% endfor %}
+    </section>
+
+</div>
+
