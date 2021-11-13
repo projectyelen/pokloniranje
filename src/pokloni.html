@@ -2,45 +2,47 @@
 layout: pokloni
 ---
 
-<section class="mt-15">
-    {% set postslist = collections.pokloni %}
+<section class="relative w-full bg-white">
+    <div class="absolute w-full h-32"></div>
+    <div class="relative w-full px-5 py-10 mx-auto sm:py-12 md:py-16 md:px-10 max-w-7xl">
 
-    {% for post in postslist | reverse %}
-        <article class="my-8">
-            <h2 class="font-bold text-3xl text-gray-900 mb-2">
-                <a href="{{ post.url | url }}">
-                    {% if post.data.title %}
-                        {{ post.data.title }}
-                    {% else %}
-                        Untitled
-                    {% endif %}
-                </a>
-            </h2>
-            <p class="text-base leading-6 text-gray-500 mb-3">
-                <time>
-                    {{ post.date | readableDate }}
-                    by
-                    <a>{{ post.data.author }}</a>
+        <h1 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 lg:text-5xl xl:text-6xl sm:mb-3"><a href="#_">{{title}}</h1>
 
-                </time>
-            </p>
-            {% if post.data.description %}
-                <p class="text-lg text-gray-500 mb-3">
-                    {{ post.data.description }}
-                </p>
-            {% endif %}
+        <div class="flex grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
 
-            <p>
-                <a href="{{ post.url | url }}" class="text-indigo-500 font-bold text-lg">
-                    Read more →
-                </a>
-            </p>
-            
-            {% for tag in post.data.tags | filterTagList %}
-              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-              <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-            {% endfor %}
+            <div class="grid grid-cols-12 col-span-12 gap-7">
+                {% set postslist = collections.pokloni %}
 
-        </article>
-    {% endfor %}
+                {% for post in postslist | reverse %}
+                <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4">
+                    <a href="#_" class="block">
+                        <img class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover hover:scale-110" src="https://cdn.devdojo.com/images/may2021/workstation.jpg">
+                    </a>
+                    <div class="relative flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
+                        <h2 class="text-base font-bold sm:text-lg md:text-xl">
+                            <a href="{{ post.url | url }}">
+                                {% if post.data.title %}
+                                    {{ post.data.title }}
+                                {% else %}
+                                    Untitled
+                                {% endif %}
+                            </a>
+                        </h2>
+                        {% if post.data.description %}
+                        <p class="mt-2 text-sm text-gray-500">{{ post.data.description }}</p>
+                        {% endif %}
+                        <div class="py-3">
+                            {% for tag in post.data.tags | filterTagList %}
+                            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                            <a href="{{ tagUrl | url }}" class="post-tag bg-indigo-400 items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-white inline-block">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
 </section>
