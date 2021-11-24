@@ -1,5 +1,7 @@
 {
 	"layout": "poklon",
-	"tags": "pokloni",
-    "permalink": "/pokloni/{{ title | slugify }}/"
+    "tags": [
+        "poklon"
+    ],
+    "permalink": "/poklon/{{ title | slugify }}/"
 }
