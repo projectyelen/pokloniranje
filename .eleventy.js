@@ -69,7 +69,7 @@ module.exports = function (eleventyConfig) {
   });
   
  function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "poklon", "pokloni"].indexOf(tag) === -1);
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
@@ -82,6 +82,22 @@ module.exports = function (eleventyConfig) {
     });
 
     return filterTagList([...tagSet]);
+  });
+
+  function filterPokloniTagList(tags) {
+    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "poklon", "pokloni"].indexOf(tag) === -1);
+  }
+
+  eleventyConfig.addFilter("filterPokloniTagList", filterPokloniTagList)
+
+  // Create an array of all tags
+  eleventyConfig.addCollection("PokloniTagList", function(collectionApi) {
+    let tagSet = new Set();
+    collectionApi.getAll().forEach(item => {
+      (item.data.tags || []).forEach(tag => tagSet.add(tag));
+    });
+
+    return filterPokloniTagList([...tagSet]);
   });
 
   // Minify HTML
