@@ -19,13 +19,6 @@ module.exports = function (eleventyConfig) {
       "dd LLL yyyy"
     );
   });
-  
-  eleventyConfig.addCollection("pokloni", function (collection) {
-    return collection.getFilteredByTag("pokloni")
-      .filter(item => {
-        return process.env.ELEVENTY_ENV === 'development' || item.data.published || item.data.published === undefined;
-      });
-  });
 
   // Syntax Highlighting for Code blocks
   eleventyConfig.addPlugin(syntaxHighlight);
