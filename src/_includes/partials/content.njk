@@ -80,7 +80,7 @@ function beer() {
           </h2>
         </a>
       </button>
-      {% for tagItem in collections.PokloniTagList %}
+      {% for tagItem in collections.pokloniTagList %}
         <button class="m-1 p-2 pl-5 pr-5 bg-red-500 hover:bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
           <a href="/tags/{{ tagItem | slug }}">
             <h2 class="text-3xl leading-9 font-bold tracking-tight text-white sm:text-4xl sm:leading-10">

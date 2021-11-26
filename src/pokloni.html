@@ -25,7 +25,7 @@ layout: pokloni
             Svi pokloni
         </a>
       </button>
-      {% for tagItem in collections.PokloniTagList %}
+      {% for tagItem in collections.pokloniTagList %}
         <button class="m-1 p-2 pl-5 pr-5 bg-red-600 hover:bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
           <a class="leading-9 font-bold tracking-tight text-white" href="/tags/{{ tagItem | slug }}">
               {{ tagItem }}

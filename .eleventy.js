@@ -84,10 +84,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("filterPokloniTagList", filterPokloniTagList)
 
   // Create an array of all tags
-  eleventyConfig.addCollection("PokloniTagList", function(collectionApi) {
+  eleventyConfig.addCollection("pokloniTagList", function(collectionApi) {
     let tagSet = new Set();
     collectionApi.getAll().forEach(item => {
-      (item.data.tags || []).forEach(tag => tagSet.add(tag));
+      (item.data.tags || []).forEach(tag => tagSet.add(tag)).getFilteredByTag("poklon");
     });
 
     return filterPokloniTagList([...tagSet]);

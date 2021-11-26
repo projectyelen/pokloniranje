@@ -9,6 +9,8 @@ pagination:
     - post
     - posts
     - tagList
+    - poklon
+    - pokloni
   addAllPagesToCollections: true
 layout: pokloni
 eleventyComputed:
@@ -39,7 +41,7 @@ permalink: /tags/{{ tag | slug }}/
             Svi pokloni
         </a>
       </button>
-      {% for tagItem in collections.PokloniTagList %}
+      {% for tagItem in collections.pokloniTagList %}
         {% if tag == tagItem %}
             <button class="m-1 p-2 pl-5 pr-5 bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
             <a class="leading-9 font-bold tracking-tight text-white" href="/tags/{{ tagItem | slug }}">
@@ -65,7 +67,7 @@ permalink: /tags/{{ tag | slug }}/
         <div class="flex grid h-full grid-cols-12">
 
             <div class="grid grid-cols-12 col-span-12 gap-7">
-                {% set postslist = collections.poklon %}
+                {% set postslist = collections[ tag ] %}
 
                 {% for post in postslist | reverse %}
                 <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg md:col-span-6 lg:col-span-4">
