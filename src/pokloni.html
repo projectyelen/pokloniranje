@@ -3,11 +3,22 @@ layout: pokloni
 ---
 
 <section class="relative w-full bg-white">
-    <div class="relative w-full px-5 py-5 mx-auto sm:py-6 md:py-8 md:px-10 max-w-7xl">
+    <div class="relative w-full px-5 py-2 mx-auto max-w-7xl">
 
-        <h3>Filtriraj listu poklona</h3>
+        <h1 class="mb-1 text-4xl font-extrabold leading-none text-gray-900"><a href="#_">{{title}}</h1>
+        <p class="text-2xl font-light text-gray-400 text-center">
+            Pronađite, odaberite, pripremite, ovaj put bez panike.
+        </p>
 
-        <div class="relative flex items-start px-6 bg-white border border-0 border-gray-200 py-7 rounded-b-2xl">
+    </div>
+</section>
+
+<section class="relative w-full bg-white">
+    <div class="relative w-full px-5 py-2 mx-auto max-w-7xl">
+
+        <h3 class="text-center">Odaberi vrstu poklona</h3>
+
+        <div class="relative flex items-start px-6 bg-white border border-0 border-gray-200 py-7 rounded-b-2xl justify-center">
             {% if page.fileSlug == "pokloni" %}
                 <li class="post-tag bg-green-400 items-center px-3 ml-1 mr-1 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-white inline-block"><a href="/pokloni">Pokloni</a></li>
             {% else %}
@@ -26,9 +37,7 @@ layout: pokloni
 </section>
 
 <section class="relative w-full bg-white">
-    <div class="relative w-full px-5 py-5 mx-auto sm:py-6 md:py-8 md:px-10 max-w-7xl">
-
-        <h1 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 lg:text-5xl xl:text-6xl sm:mb-3"><a href="#_">{{title}}</h1>
+    <div class="relative w-full px-5 py-2 mx-auto max-w-7xl">
 
         <div class="flex grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
 
@@ -36,11 +45,11 @@ layout: pokloni
                 {% set postslist = collections.poklon %}
 
                 {% for post in postslist | reverse %}
-                <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-sm rounded-xl md:col-span-6 lg:col-span-4">
+                <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg md:col-span-6 lg:col-span-4">
                     <a href="#_" class="block">
                         <img class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover hover:scale-110" src="https://cdn.devdojo.com/images/may2021/workstation.jpg">
                     </a>
-                    <div class="relative flex flex-col items-start px-6 bg-white border border-t-0 border-gray-200 py-7 rounded-b-2xl">
+                    <div class="relative flex flex-col items-start px-6 bg-white py-7 text-center items-center">
                         <h2 class="text-base font-bold sm:text-lg md:text-xl">
                             <a href="{{ post.url | url }}">
                                 {% if post.data.title %}
@@ -53,6 +62,11 @@ layout: pokloni
                         {% if post.data.description %}
                         <p class="mt-2 text-sm text-gray-500">{{ post.data.description }}</p>
                         {% endif %}
+                        <p>
+                            <a href="{{ post.url | url }}" class="inline-flex text-indigo-500">
+                                Saznaj više →
+                            </a>
+                        </p>
                         <div class="py-3">
                             {% for tag in post.data.tags | filterTagList %}
                             {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}

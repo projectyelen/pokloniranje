@@ -1,9 +1,9 @@
 <nav
     id="header" 
-    class="flex flex-col sm:flex-row items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 px-2 py-3 shadow-lg"
+    class="flex flex-col sm:flex-row items-center justify-between flex-wrap p-6 fixed w-full z-10 top-0 px-2 py-3 shadow-md"
     x-data="{ isOpen: false }"
     @keydown.escape="isOpen = false"
-    :class="{ 'shadow-lg bg-white' : isOpen , 'shadow-lg bg-white' : !isOpen}"
+    :class="{ 'shadow-md bg-white' : isOpen , 'shadow-md bg-white' : !isOpen}"
     >
     <div id="progress" class="h-1 z-20 top-0" style="background:linear-gradient(to right, #4dc0b5 var(--scroll), transparent 0);"></div>
     <div class="w-full mx-auto flex flex-wrap items-center justify-between">
