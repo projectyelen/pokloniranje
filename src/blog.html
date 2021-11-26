@@ -3,7 +3,7 @@ layout: blog
 ---
 
 <section class="relative w-full bg-white">
-    <div class="relative w-full px-5 py-2 mx-auto max-w-7xl">
+    <div class="relative w-full px-5 py-2 mb-10 mx-auto max-w-7xl">
 
         <h1 class="mb-1 text-4xl font-extrabold leading-none text-gray-900"><a href="#_">{{title}}</h1>
         <p class="text-2xl font-light text-gray-400 text-center">
@@ -14,7 +14,31 @@ layout: blog
 </section>
 
 <section class="relative w-full bg-white">
-    <div class="relative w-full mx-auto max-w-7xl">
+  <div class="relative w-full px-5 py-2 mt-10 mb-10 mx-auto max-w-7xl">
+
+    <h2 class="mb-1 text-3xl font-extrabold leading-tight text-gray-900 text-center">Odaberi vrstu poklona</h2>
+    <p class="mb-5 text-lg text-gray-500 text-center">Odaberi vrstu poklona kojeg tražiš. Za sve prigode najbolje ideje.</p>
+
+    <div class="text-center">
+      <button class="m-1 p-2 pl-5 pr-5 bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
+        <a class="leading-9 font-bold tracking-tight text-white" href="/pokloni">
+            Svi pokloni
+        </a>
+      </button>
+      {% for tagItem in collections.PokloniTagList %}
+        <button class="m-1 p-2 pl-5 pr-5 bg-red-600 hover:bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
+          <a class="leading-9 font-bold tracking-tight text-white" href="/tags/{{ tagItem | slug }}">
+              {{ tagItem }}
+          </a>
+        </button>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<section class="relative w-full bg-white">
+    <div class="relative w-full px-5 py-2 mt-10 mb-10 mx-auto max-w-7xl">
 
         <div class="flex h-full">
 
@@ -22,7 +46,7 @@ layout: blog
                 {% set postslist = collections.post %}
 
                 {% for post in postslist | reverse %}
-                <div class="flex flex-col mt-5 mb-5 items-start overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg">
+                <div class="flex flex-col mb-10 items-start overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg">
                     <a href="#_" class="block">
                         <img class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover hover:scale-110" src="https://cdn.devdojo.com/images/may2021/workstation.jpg">
                     </a>
