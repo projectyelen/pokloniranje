@@ -95,6 +95,44 @@ module.exports = function (eleventyConfig) {
     return filterPokloniTagList([...tagSet]);
   });
 
+  // Custom filter for featured content.
+  eleventyConfig.addFilter("featured", (collection = []) =>
+    collection.filter(page => !!page.data.featured)
+  );
+
+  // Custom collection for featured content.
+  eleventyConfig.addCollection("eleventyfeatured", collection =>
+    collection
+      .getFilteredByTags("poklon")
+      .filter(page => !!page.data.featured)
+      .reverse()
+  );
+
+    /**
+   * Finds all related posts in a collection, but filters out the current page.
+   * Usage: `{% related title="Eleventy data posts", collection=collections["eleventy:data"], filterUrl=page.url %}`
+   */
+     eleventyConfig.addShortcode(
+      "related",
+      ({ collection = [], title = "", filterUrl = "", cls = "related" }) => {
+        // Omit the current URL from the collection.
+        collection = collection.filter(page => page.url !== filterUrl);
+        // Exit early if no other pages in the specified collection.
+        if (collection.length === 0) {
+          return `<!-- No related content found for "${title}" -->`;
+        }
+        // Convert collection items to HTML markup.
+        const innerHtml = collection
+          .map(page => `<li><a href="${page.url}">${page.data.title}</a></li>`)
+          .join("\n")
+          .trim();
+        if (title.length) title = `<h2>${title}</h2>`;
+        return `<section class="${cls}">${title}\n<ul>${innerHtml}</ul></section>`;
+      }
+    );
+
+
+
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, bs) {

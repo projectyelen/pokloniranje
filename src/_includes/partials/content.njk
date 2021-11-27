@@ -110,10 +110,10 @@ function beer() {
 <section class="relative w-full bg-white">
   <div class="relative w-full px-5 py-2 mt-20 mb-20 mx-auto max-w-7xl">
 
-    <h2 class="mb-1 text-3xl font-extrabold leading-tight text-gray-900 text-center">Odaberi vrstu poklona</h2>
-    <p class="mb-5 text-lg text-gray-500 text-center">Odaberi vrstu poklona kojeg tražiš. Za sve prigode najbolje ideje.</p>
+    <h2 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 text-center">Odaberi vrstu poklona</h2>
+    <p class="text-2xl font-light text-gray-400 text-center">Odaberi vrstu poklona kojeg tražiš. Za sve prigode najbolje ideje.</p>
 
-    <div class="text-center">
+    <div class="mt-8 sm:mt-16 text-center">
       <button class="m-1 p-2 pl-5 pr-5 bg-red-500 hover:bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
         <a href="/pokloni">
           <h2 class="text-3xl leading-9 font-bold tracking-tight text-white sm:text-4xl sm:leading-10">
@@ -135,4 +135,50 @@ function beer() {
   </div>
 </section>
 
+<section class="relative w-full bg-white">
+    <div class="absolute w-full h-32 bg-gradient-to-b from-gray-100 to-white"></div>
+    <div class="relative w-full px-5 py-10 mx-auto sm:py-12 md:py-16 md:px-10 max-w-7xl">
 
+        <h2 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 text-center"><a href="#_">Najpopularniji odabir</a></h2>
+        <p class="text-2xl font-light text-gray-400 text-center">Odabrali naši posjetitelji.</p>
+        <div class="flex grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
+            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
+                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/quench-satisfying.jpg')">
+                </a>
+                <div class="relative z-20 w-full h-auto py-8 text-white bg-purple-500 border-t-0 border-yellow-200 px-7">
+                    <a href="#_" class="inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-purple-500 bg-white">Resources</a>
+                    <h2 class="mb-5 text-5xl font-bold"><a href="#_">Refreshing Designs</a></h2>
+                    <p class="mb-2 text-lg font-normal text-purple-100 opacity-100">Quench satisfying designs to help you stir up emotion and tell a story.</p>
+
+                </div>
+            </div>
+
+            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
+                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/orange.jpg')">
+                </a>
+                <div class="relative z-20 w-full h-auto py-8 text-white bg-blue-400 border-t-0 border-yellow-200 px-7">
+                    <a href="#_" class="inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-blue-500 bg-white">Lifestyle</a>
+                    <h2 class="mb-5 text-5xl font-bold"><a href="#_">Healthier Lifestyle</a></h2>
+                    <p class="mb-2 text-lg font-normal text-blue-100 opacity-100">Living a healthier lifestyle will help with your productivity and your mind-set.</p>
+
+                </div>
+            </div>
+
+            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group sm:col-span-12 xl:col-span-4 sm:flex-row xl:flex-col">
+                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/gbc.jpg')"></a>
+                <div class="relative z-20 flex flex-col items-start justify-center w-full h-auto py-8 text-white bg-yellow-400 border-t-0 border-yellow-200 sm:h-full xl:h-auto px-7">
+                    <a href="#_" class="inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-yellow-400 bg-white">Entertainment</a>
+                    <h2 class="mb-5 text-5xl font-bold"><a href="#_">Gaming Evolution</a></h2>
+                    <p class="mb-2 text-lg font-normal opacity-100 text-yellow-50">Learn about the evolution of gaming and how it started a revolution.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% related title="Featured posts (via collection)",
+    collection=collections["eleventyfeatured"],
+    cls="featured" %}
