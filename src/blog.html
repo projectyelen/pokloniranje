@@ -14,44 +14,20 @@ layout: blog
 </section>
 
 <section class="relative w-full bg-white">
-  <div class="relative w-full px-5 py-2 mt-10 mb-10 mx-auto max-w-7xl">
-
-    <h2 class="mb-1 text-3xl font-extrabold leading-tight text-gray-900 text-center">Odaberi vrstu poklona</h2>
-    <p class="mb-5 text-lg text-gray-500 text-center">Odaberi vrstu poklona kojeg tražiš. Za sve prigode najbolje ideje.</p>
-
-    <div class="text-center">
-      <button class="m-1 p-2 pl-5 pr-5 bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
-        <a class="leading-9 font-bold tracking-tight text-white" href="/pokloni">
-            Svi pokloni
-        </a>
-      </button>
-      {% for tagItem in collections.pokloniTagList %}
-        <button class="m-1 p-2 pl-5 pr-5 bg-red-600 hover:bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
-          <a class="leading-9 font-bold tracking-tight text-white" href="/tags/{{ tagItem | slug }}">
-              {{ tagItem }}
-          </a>
-        </button>
-      {% endfor %}
-    </div>
-
-  </div>
-</section>
-
-<section class="relative w-full bg-white">
     <div class="relative w-full px-5 py-2 mt-10 mb-10 mx-auto max-w-7xl">
 
-        <div class="flex h-full">
+        <div class="flex grid h-full grid-cols-12">
 
-            <div class="">
+            <div class="grid grid-cols-12 col-span-12 gap-7">
                 {% set postslist = collections.post %}
 
                 {% for post in postslist | reverse %}
-                <div class="flex flex-col mb-10 items-start overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg">
+                <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg md:col-span-6 lg:col-span-4">
                     <a href="#_" class="block">
                         <img class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover hover:scale-110" src="https://cdn.devdojo.com/images/may2021/workstation.jpg">
                     </a>
                     <div class="relative flex flex-col items-start px-6 bg-white py-7 text-center items-center">
-                        <h2 class="font-bold text-3xl text-gray-900 mb-2">
+                        <h2 class="text-base font-bold sm:text-lg md:text-xl">
                             <a href="{{ post.url | url }}">
                                 {% if post.data.title %}
                                     {{ post.data.title }}
@@ -61,17 +37,17 @@ layout: blog
                             </a>
                         </h2>
                         {% if post.data.description %}
-                        <p class="text-lg text-gray-500 mb-3">{{ post.data.description }}</p>
+                        <p class="mt-2 text-sm text-gray-500">{{ post.data.description }}</p>
                         {% endif %}
                         <p>
                             <a href="{{ post.url | url }}" class="inline-flex text-indigo-500">
-                                Čitaj dalje →
+                                Čitaj više →
                             </a>
                         </p>
                         <div class="py-3">
                             {% for tag in post.data.tags | filterTagList %}
                             {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-                            <a href="{{ tagUrl | url }}" class="post-tag bg-indigo-400 items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-white inline-block">{{ tag }}</a>
+                            <a href="{{ tagUrl | url }}" class="post-tag bg-red-600 hover:bg-green-400 items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-white inline-block">{{ tag }}</a>
                             {% endfor %}
                         </div>
                     </div>
