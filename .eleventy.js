@@ -88,7 +88,7 @@ module.exports = function (eleventyConfig) {
   // Create an array of all tags
   eleventyConfig.addCollection("pokloniTagList", function(collectionApi) {
     let tagSet = new Set();
-    collectionApi.getAll().forEach(item => {
+    collectionApi.getFilteredByTags("poklon").forEach(item => {
       (item.data.tags || []).forEach(tag => tagSet.add(tag));
     });
 
@@ -101,10 +101,32 @@ module.exports = function (eleventyConfig) {
   );
 
   // Custom collection for featured content.
-  eleventyConfig.addCollection("eleventyfeatured", collection =>
+  eleventyConfig.addCollection("pokloniFeatured", collection =>
     collection
       .getFilteredByTags("poklon")
       .filter(page => !!page.data.featured)
+      .reverse()
+  );
+
+  // Custom collection for featured content.
+  eleventyConfig.addCollection("blogFeatured", collection =>
+    collection
+      .getFilteredByTags("post")
+      .filter(page => !!page.data.featured)
+      .reverse()
+  );
+
+  // Custom collection for featured content.
+  eleventyConfig.addCollection("blogList", collection =>
+    collection
+      .getFilteredByTags("post")
+      .reverse()
+  );
+
+  // Custom collection for featured content.
+  eleventyConfig.addCollection("pokloniList", collection =>
+    collection
+      .getFilteredByTags("poklon")
       .reverse()
   );
 

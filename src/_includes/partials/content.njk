@@ -136,49 +136,101 @@ function beer() {
 </section>
 
 <section class="relative w-full bg-white">
-    <div class="absolute w-full h-32 bg-gradient-to-b from-gray-100 to-white"></div>
-    <div class="relative w-full px-5 py-10 mx-auto sm:py-12 md:py-16 md:px-10 max-w-7xl">
+    <div class="relative w-full px-5 py-2 mt-10 mb-10 mx-auto max-w-7xl">
 
-        <h2 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 text-center"><a href="#_">Najpopularniji odabir</a></h2>
-        <p class="text-2xl font-light text-gray-400 text-center">Odabrali naši posjetitelji.</p>
-        <div class="flex grid h-full grid-cols-12 gap-10 pb-10 mt-8 sm:mt-16">
-            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
-                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/quench-satisfying.jpg')">
-                </a>
-                <div class="relative z-20 w-full h-auto py-8 text-white bg-purple-500 border-t-0 border-yellow-200 px-7">
-                    <a href="#_" class="inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-purple-500 bg-white">Resources</a>
-                    <h2 class="mb-5 text-5xl font-bold"><a href="#_">Refreshing Designs</a></h2>
-                    <p class="mb-2 text-lg font-normal text-purple-100 opacity-100">Quench satisfying designs to help you stir up emotion and tell a story.</p>
+        <h2 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 text-center"><a href="#_">Popularni članci</a></h2>
+        <p class="text-2xl font-light text-gray-400 text-center">Blog ispunjen idejama za poklone.</p>
 
+        <div class="flex grid h-full grid-cols-12 mt-10">
+
+            <div class="grid grid-cols-12 col-span-12 gap-7">
+                {% set postslist = collections.blogFeatured %}
+
+                {% for post in postslist | reverse %}
+                <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg md:col-span-6 lg:col-span-4">
+                    <a href="#_" class="block">
+                        <img class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover hover:scale-110" src="https://cdn.devdojo.com/images/may2021/workstation.jpg">
+                    </a>
+                    <div class="relative flex flex-col items-start px-6 bg-white py-7 text-center items-center">
+                        <h2 class="text-base font-bold sm:text-lg md:text-xl">
+                            <a href="{{ post.url | url }}">
+                                {% if post.data.title %}
+                                    {{ post.data.title }}
+                                {% else %}
+                                    Untitled
+                                {% endif %}
+                            </a>
+                        </h2>
+                        {% if post.data.description %}
+                        <p class="mt-2 text-sm text-gray-500">{{ post.data.description }}</p>
+                        {% endif %}
+                        <p>
+                            <a href="{{ post.url | url }}" class="inline-flex text-indigo-500">
+                                Čitaj više →
+                            </a>
+                        </p>
+                        <div class="py-3">
+                            {% for tag in post.data.tags | filterTagList %}
+                            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                            <a href="{{ tagUrl | url }}" class="post-tag bg-red-600 hover:bg-green-400 items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-white inline-block">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
+
             </div>
 
-            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group md:col-span-6 xl:col-span-4">
-                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/orange.jpg')">
-                </a>
-                <div class="relative z-20 w-full h-auto py-8 text-white bg-blue-400 border-t-0 border-yellow-200 px-7">
-                    <a href="#_" class="inline-block text-xs font-semibold absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-blue-500 bg-white">Lifestyle</a>
-                    <h2 class="mb-5 text-5xl font-bold"><a href="#_">Healthier Lifestyle</a></h2>
-                    <p class="mb-2 text-lg font-normal text-blue-100 opacity-100">Living a healthier lifestyle will help with your productivity and your mind-set.</p>
-
-                </div>
-            </div>
-
-            <div class="relative flex flex-col items-start justify-end h-full col-span-12 overflow-hidden rounded-xl group sm:col-span-12 xl:col-span-4 sm:flex-row xl:flex-col">
-                <a href="#_" class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover h-96 hover:scale-110" style="background-image:url('https://cdn.devdojo.com/images/may2021/gbc.jpg')"></a>
-                <div class="relative z-20 flex flex-col items-start justify-center w-full h-auto py-8 text-white bg-yellow-400 border-t-0 border-yellow-200 sm:h-full xl:h-auto px-7">
-                    <a href="#_" class="inline-block text-xs font-semibold absolute sm:mb-5 xl:mb-0 sm:relative xl:absolute top-0 -mt-3.5 rounded-full px-4 py-2 uppercase text-yellow-400 bg-white">Entertainment</a>
-                    <h2 class="mb-5 text-5xl font-bold"><a href="#_">Gaming Evolution</a></h2>
-                    <p class="mb-2 text-lg font-normal opacity-100 text-yellow-50">Learn about the evolution of gaming and how it started a revolution.</p>
-
-                </div>
-            </div>
         </div>
     </div>
 </section>
 
+<section class="relative w-full bg-white">
+    <div class="relative w-full px-5 py-2 mt-10 mb-10 mx-auto max-w-7xl">
 
+        <h2 class="mb-1 text-4xl font-extrabold leading-none text-gray-900 text-center"><a href="#_">Najpopularniji odabir poklona</a></h2>
+        <p class="text-2xl font-light text-gray-400 text-center">Odabrali naši posjetitelji.</p>
 
-{% related title="Featured posts (via collection)",
-    collection=collections["eleventyfeatured"],
-    cls="featured" %}
+        <div class="flex grid h-full grid-cols-12 mt-10">
+
+            <div class="grid grid-cols-12 col-span-12 gap-7">
+                {% set postslist = collections.pokloniFeatured %}
+
+                {% for post in postslist | reverse %}
+                <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg md:col-span-6 lg:col-span-4">
+                    <a href="#_" class="block">
+                        <img class="block w-full transition duration-300 ease-in-out transform bg-center bg-cover hover:scale-110" src="https://cdn.devdojo.com/images/may2021/workstation.jpg">
+                    </a>
+                    <div class="relative flex flex-col items-start px-6 bg-red-500 py-7 text-white text-center items-center">
+                        <h2 class="text-base font-bold sm:text-lg md:text-xl">
+                            <a href="{{ post.url | url }}">
+                                {% if post.data.title %}
+                                    {{ post.data.title }}
+                                {% else %}
+                                    Untitled
+                                {% endif %}
+                            </a>
+                        </h2>
+                        {% if post.data.description %}
+                        <p class="mt-2 text-sm">{{ post.data.description }}</p>
+                        {% endif %}
+                        <p>
+                            <a href="{{ post.url | url }}" class="inline-flex text-white">
+                                Čitaj više →
+                            </a>
+                        </p>
+                        <div class="py-3">
+                            {% for tag in post.data.tags | filterTagList %}
+                            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                            <a href="{{ tagUrl | url }}" class="post-tag bg-white hover:bg-green-400 hover:text-white items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-red-500 inline-block">{{ tag }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</section>
