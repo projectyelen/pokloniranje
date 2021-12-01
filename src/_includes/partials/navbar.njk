@@ -1,5 +1,9 @@
+
 <div class="flex flex-col sm:flex-row items-center justify-between flex-wrap fixed w-full z-10 top-0 shadow-md bg-red-600">
-    <div x-data="{ open: false }" class="w-full flex flex-col p-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 shadow-md">
+<div x-data="scrollProgress()" x-init="init()" x-cloak class="w-full flex flex-col md:flex-row">
+    <div class="h-2 bg-white" :style="`width: ${percent}%`"></div>
+</div>
+    <div x-data="{ open: false }" class="w-full flex flex-col p-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8 shadow-sd">
         <div class="flex flex-row items-center justify-between lg:justify-start">
             <a href="/" class="text-lg font-bold tracking-tighter text-white transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8 uppercase">
                 Pokloniranje
@@ -26,4 +30,20 @@
         </nav>
     </div>
 </div>
-        
+
+
+<script>
+    const scrollProgress = () => {
+    return {
+        init() {
+        window.addEventListener('scroll', () => {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+            this.percent = Math.round((winScroll / height) * 100)
+        })
+        },
+        circumference: 30 * 2 * Math.PI,
+        percent: 0,
+    }
+    }
+</script>
