@@ -27,7 +27,7 @@ layout: pokloni
       </button>
       {% for tagItem in collections.pokloniTagList %}
         <button class="m-1 p-2 pl-5 pr-5 bg-red-600 hover:bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
-          <a class="leading-9 font-bold tracking-tight text-white" href="/tags/{{ tagItem | slug }}">
+          <a class="leading-9 font-bold tracking-tight text-white" href="/tagovi/{{ tagItem | slug }}">
               {{ tagItem }}
           </a>
         </button>
@@ -43,7 +43,7 @@ layout: pokloni
         <div class="flex grid h-full grid-cols-12">
 
             <div class="grid grid-cols-12 col-span-12 gap-7">
-                {% set postslist = collections.poklon %}
+                {% set postslist = collections.pokloni %}
 
                 {% for post in postslist | reverse %}
                 <div class="flex flex-col items-start col-span-12 overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg md:col-span-6 lg:col-span-4">
@@ -70,7 +70,7 @@ layout: pokloni
                         </p>
                         <div class="py-3">
                             {% for tag in post.data.tags | filterTagList %}
-                            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                            {% set tagUrl %}/tagovi/{{ tag | slug }}/{% endset %}
                             <a href="{{ tagUrl | url }}" class="post-tag bg-red-600 hover:bg-green-400 items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-white inline-block">{{ tag }}</a>
                             {% endfor %}
                         </div>

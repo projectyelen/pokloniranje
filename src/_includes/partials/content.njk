@@ -121,7 +121,7 @@ function beer() {
       </button>
       {% for tagItem in collections.pokloniTagList %}
         <button class="m-1 p-2 pl-5 pr-5 bg-red-500 hover:bg-green-400 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300">
-          <a href="/tags/{{ tagItem | slug }}">
+          <a href="/tagovi/{{ tagItem | slug }}">
             <h2 class="text-3xl leading-9 font-bold tracking-tight text-white sm:text-4xl sm:leading-10">
               {{ tagItem }}
             </h2>
@@ -169,7 +169,7 @@ function beer() {
                         </p>
                         <div class="py-3">
                             {% for tag in post.data.tags | filterTagList %}
-                            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                            {% set tagUrl %}/tagovi/{{ tag | slug }}/{% endset %}
                             <a href="{{ tagUrl | url }}" class="post-tag bg-red-600 hover:bg-green-400 items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-white inline-block">{{ tag }}</a>
                             {% endfor %}
                         </div>
@@ -219,7 +219,7 @@ function beer() {
                         </p>
                         <div class="py-3">
                             {% for tag in post.data.tags | filterTagList %}
-                            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+                            {% set tagUrl %}/tagovi/{{ tag | slug }}/{% endset %}
                             <a href="{{ tagUrl | url }}" class="post-tag bg-white hover:bg-green-400 hover:text-white items-center px-3 mt-1 mb-1 py-1 w-auto rounded-full text-xs font-medium uppercase text-red-500 inline-block">{{ tag }}</a>
                             {% endfor %}
                         </div>

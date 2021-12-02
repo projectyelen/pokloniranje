@@ -64,7 +64,7 @@ module.exports = function (eleventyConfig) {
   });
   
  function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "poklon", "pokloni"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "nav", "posts", "pokloni"].indexOf(tag) === -1);
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
@@ -80,7 +80,7 @@ module.exports = function (eleventyConfig) {
   });
 
   function filterPokloniTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "poklon", "pokloni"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "nav", "posts", "pokloni"].indexOf(tag) === -1);
   }
 
   eleventyConfig.addFilter("filterPokloniTagList", filterPokloniTagList)
@@ -88,7 +88,7 @@ module.exports = function (eleventyConfig) {
   // Create an array of all tags
   eleventyConfig.addCollection("pokloniTagList", function(collectionApi) {
     let tagSet = new Set();
-    collectionApi.getFilteredByTags("poklon").forEach(item => {
+    collectionApi.getFilteredByTags("pokloni").forEach(item => {
       (item.data.tags || []).forEach(tag => tagSet.add(tag));
     });
 
@@ -103,7 +103,7 @@ module.exports = function (eleventyConfig) {
   // Custom collection for featured content.
   eleventyConfig.addCollection("pokloniFeatured", collection =>
     collection
-      .getFilteredByTags("poklon")
+      .getFilteredByTags("pokloni")
       .filter(page => !!page.data.featured)
       .reverse()
   );
@@ -111,7 +111,7 @@ module.exports = function (eleventyConfig) {
   // Custom collection for featured content.
   eleventyConfig.addCollection("blogFeatured", collection =>
     collection
-      .getFilteredByTags("post")
+      .getFilteredByTags("posts")
       .filter(page => !!page.data.featured)
       .reverse()
   );
@@ -119,14 +119,14 @@ module.exports = function (eleventyConfig) {
   // Custom collection for featured content.
   eleventyConfig.addCollection("blogList", collection =>
     collection
-      .getFilteredByTags("post")
+      .getFilteredByTags("posts")
       .reverse()
   );
 
   // Custom collection for featured content.
   eleventyConfig.addCollection("pokloniList", collection =>
     collection
-      .getFilteredByTags("poklon")
+      .getFilteredByTags("pokloni")
       .reverse()
   );
 

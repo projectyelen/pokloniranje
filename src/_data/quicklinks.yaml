@@ -2,22 +2,22 @@
 links:
   - title: Rođendan
     titlealt: Za najroćkas
-    url: "/tags/rodjendan"
+    url: "/tagovi/rodjendan"
     desc: Hand crafted dashboards for everything from Recurring Revenue to Customer Churn.
     icon: 
   - title: Božić
     titlealt: Božična radost
-    url: "/tags/bozic"
+    url: "/tagovi/bozic"
     desc: Your central hub that helps you see, and react to, absolutely everything that’s happening.
     icon: 
   - title: Krizma
     titlealt: Krizmena kriza
-    url: "/tags/krizma"
+    url: "/tagovi/krizma"
     desc: Stay informed with daily, weekly, or monthly reports on all your insights data.
     icon: 
   - title: Krštenje
     titlealt: Krštenje iznenađenje
-    url: "/tags/krstenje"
+    url: "/tagovi/krstenje"
     desc: Our forecasting is your magical crystal ball that helps you predict and plan for the future.
     icon: 
 

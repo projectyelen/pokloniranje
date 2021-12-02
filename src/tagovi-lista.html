@@ -1,5 +1,5 @@
 ---
-permalink: /tags/
+permalink: /tagovi/
 layout: base
 title: Tagovi
 ---
@@ -11,7 +11,7 @@ title: Tagovi
 
     <section class="mt-15">
         {% for tag in collections.pokloniTagList %}
-            {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+            {% set tagUrl %}/tagovi/{{ tag | slug }}/{% endset %}
             <article class="my-8">
                 <h2 class="font-bold text-3xl text-gray-900 mb-2">
                     <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
